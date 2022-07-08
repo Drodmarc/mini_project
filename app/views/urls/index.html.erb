@@ -4,7 +4,7 @@
   <ul>
     <li>id:<%= url.id %></li>
     <li>description:<%= url.description %></li>
-    <li>short url:<%= url.short_url %></li>
+    <li>short url:<%= link_to "#{@domain}/#{url.short_url}", url.short_url %></li>
     <li>long url:<%= url.long_url %></li>
 
   <li>

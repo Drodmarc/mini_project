@@ -1,4 +1,4 @@
-<h1>New Url</h1>
+<h1>LINK-Shorty</h1>
 <h2><%= @short %></h2>
 <% if @url.errors.any? %>
   <% @url.errors.full_messages.each do |message| %>
@@ -7,11 +7,13 @@
 <% end %>
 
 <%= form_for @url, url: urls_path, method: :post do |f| %>
-  <%= f.label :description %>
+  <%= f.label :description %><br>
   <%= f.text_field :description %><br>
 
-  <%= f.label :long_url %>
+  <%= f.label :long_url %><br>
   <%= f.text_field :long_url %><br>
 
-  <%= f.submit %>
+  <%= f.label :Short_url %><br>
+  <%= f.text_field :long_url %><br>
+  <%= f.submit :Create %>
 <% end %>
