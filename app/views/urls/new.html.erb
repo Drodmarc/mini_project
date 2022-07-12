@@ -1,17 +1,25 @@
-<h1>LINK-Shorty</h1>
-<h2><%= @short %></h2>
-<% if @url.errors.any? %>
-  <% @url.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
+<div class="container">
+
+  <h1>LINK-Shorty</h1>
+  <% if @url.errors.any? %>
+    <% @url.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
   <% end %>
-<% end %>
 
-<%= form_for @url, url: urls_path, method: :post do |f| %>
-  <%= f.label :description %><br>
-  <%= f.text_field :description %><br>
+  <%= form_for @url, url: urls_path, method: :post do |f| %>
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_field :description, class: 'form-control' %>
+    </div>
 
-  <%= f.label :long_url %><br>
-  <%= f.text_field :long_url %><br>
+    <div class="form-group">
+      <%= f.label :long_url %>
+      <%= f.text_field :long_url, class: 'form-control' %>
+    </div>
 
-  <%= f.submit :Create %>
-<% end %>
+    <div class="form-group">
+      <%= f.submit class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
