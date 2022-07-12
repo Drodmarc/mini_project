@@ -4,7 +4,7 @@ class UrlsController < ApplicationController
   before_action :set_own_url, only: [:destroy, :update, :edit]
 
   def index
-    @url = Url.all.includes(:user)
+    @urls = Url.includes(:user).page(params[:page]).per(5)
     @domain = request.base_url
   end
 
