@@ -1,20 +1,32 @@
-<h1>URL List</h1>
+<div class="container">
+<h1>List of URL</h1>
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">ID</th>
+    <th scope="col">Description</th>
+    <th scope="col">Short_url</th>
+    <th scope="col">Long_url</th>
+    <th scope="col">Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @url.each do |url| %>
+    <tr>
+      <td>id:<%= url.id %></td>
+      <td>description:<%= url.description %></td>
+      <td>short url:<%= link_to "#{@domain}/#{url.short_url}", url.short_url %></td>
+      <td>long url:<%= url.long_url %></td>
+      <td>
+        <%= link_to "Edit", edit_url_path(url), class: 'btn btn-warning' if url.user == current_user %>
+        <%= form_for url, url: url_path(url), method: :delete do |f| %>
+        <%= f.submit 'Delete', class: 'btn btn-danger' %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 
-<% @url.each do |url| %>
-  <ul>
-    <li>id:<%= url.id %></li>
-    <li>description:<%= url.description %></li>
-    <li>short url:<%= link_to "#{@domain}/#{url.short_url}", url.short_url %></li>
-    <li>long url:<%= url.long_url %></li>
-
-  <li>
-    <%= link_to "edit this url #{url.id}", edit_url_path(url) if url.user == current_user %>
-    <%= form_for url, url: url_path(url), method: :delete do |f| %>
-      <%= f.submit 'delete' %>
-    <% end %>
-  </li>
-
-  </ul>
-<% end %>
-
-<%= link_to 'Create New', new_url_path %>
+<%= link_to 'Create New', new_url_path, class: 'btn btn-success'%>
+</div>
