@@ -31,6 +31,7 @@ gem 'mysql2'
 gem 'devise'
 gem 'kaminari'
 gem 'rest-client'
+gem 'active_model_serializers'
 
 
 group :development, :test do
