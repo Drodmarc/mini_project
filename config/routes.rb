@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   get '/:short_url' => 'urls#redirect'
   root :to => "urls#index"
   resources :urls
+
+  namespace :api do
+    resources :regions, only: :index
+  end
 end
 
 
